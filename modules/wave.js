@@ -7,11 +7,14 @@ class Wave {
     this.width = this.game.columns * this.game.enemySize;
     this.height = this.game.rows * this.game.enemySize;
     // if the wave starts at 0, it gets stuck on left corner, must start within boundaries set in render method
-    this.x = 0 + this.width;
+    this.x = 0 + this.game.width * 0.25;
     this.y = 0 - this.height;
+    // this.x = 0 + this.width;
+    // this.y = 0 - this.height;
     this.speedX = 3;
     this.speedY = 0;
     this.enemies = [];
+    this.nextWaveTrigger = false;
     this.create();
   }
   render(context) {
@@ -31,6 +34,7 @@ class Wave {
       enemy.update(this.x, this.y);
       enemy.draw(context);
     });
+    this.enemies = this.enemies.filter((object) => !object.markedForDeletion);
   }
   create() {
     for (let y = 0; y < this.game.rows; y++) {

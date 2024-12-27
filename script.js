@@ -5,9 +5,9 @@ window.addEventListener("load", function () {
   const ctx = canvas.getContext("2d");
   canvas.width = 600;
   canvas.height = 800;
-  ctx.fillStyle = "white";
+  ctx.fillStyle = "#ff90c7";
   ctx.strokeStyle = "white";
-  ctx.font = "30px Impact";
+  ctx.font = "500 30px DotGothic16";
   ctx.lineWidth = 5;
 
   const game = new Game(canvas);
@@ -19,3 +19,5 @@ window.addEventListener("load", function () {
   }
   animate();
 });
+
+// timestamp 56:11 https://www.youtube.com/watch?v=cuudnyDyWGE&t=2277s
