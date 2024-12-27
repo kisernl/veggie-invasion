@@ -15,10 +15,13 @@ class Projectile {
   update() {
     if (!this.free) {
       this.y -= this.speed;
+      if (this.y < -this.height) this.reset();
     }
   }
   //method for using a projectile from the projectiles pool
-  start() {
+  start(x, y) {
+    this.x = x - this.width * 0.5;
+    this.y = y;
     this.free = false;
   }
   // method for returning used projectile to the pool

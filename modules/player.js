@@ -17,9 +17,14 @@ class Player {
     if (this.game.keys.indexOf("ArrowLeft") > -1) this.x -= this.speed;
     if (this.game.keys.indexOf("ArrowRight") > -1) this.x += this.speed;
     // horizontal boundaries
+    ///////////////////// FEATURE UPDATE: player stays within game canvas. Enemies bounce off invisible boundary which is 1/4 the size of teh enemy from the edge
     if (this.x < 0) this.x = 0;
     else if (this.x > this.game.width - this.width)
       this.x = this.game.width - this.width;
+  }
+  shoot() {
+    const projectile = this.game.getProjectile();
+    if (projectile) projectile.start(this.x + this.width * 0.5, this.y);
   }
 }
 
