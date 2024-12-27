@@ -1,9 +1,4 @@
-import Player from "./modules/player.js";
-import Projectiles from "./modules/projectiles.js";
-import Enemy from "./modules/enemy.js";
-
-const enemy = new Enemy();
-enemy.test();
+import Game from "./modules/game.js";
 
 window.addEventListener("load", function () {
   const canvas = document.getElementById("canvas1");
@@ -13,4 +8,13 @@ window.addEventListener("load", function () {
   ctx.fillStyle = "white";
   ctx.strokeStyle = "white";
   ctx.font = "30px Impact";
+
+  const game = new Game(canvas);
+
+  function animate() {
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    game.render(ctx);
+    window.requestAnimationFrame(animate);
+  }
+  animate();
 });
