@@ -21,7 +21,7 @@ class Enemy {
       if (!projectile.free && this.game.checkCollision(this, projectile)) {
         this.markedForDeletion = true;
         projectile.reset();
-        this.game.score++;
+        if (!this.game.gameOver) this.game.score++;
       }
     });
     // check collision between enemy & player

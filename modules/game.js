@@ -14,10 +14,11 @@ class Game {
     this.projectilesPool = [];
     this.numberOfProjectiles = 10;
     this.createProjectiles();
+    this.fired = false;
 
     //wave grid for enemies
-    this.columns = 6;
-    this.rows = 6;
+    this.columns = 2;
+    this.rows = 2;
     this.enemySize = 48;
 
     this.waves = [];
@@ -30,9 +31,13 @@ class Game {
     // event listener
     window.addEventListener("keydown", (e) => {
       if (this.keys.indexOf(e.key) === -1) this.keys.push(e.key);
-      if (e.key === "s") this.player.shoot();
+      if (e.key === "s" && !this.fired) this.player.shoot();
+      this.fired = true;
+      if ((e.key === "r" && this.gameOver) || (e.key === "R" && this.gameOver))
+        this.restart();
     });
     window.addEventListener("keyup", (e) => {
+      this.fired = false;
       const index = this.keys.indexOf(e.key);
       if (index > -1) this.keys.splice(index, 1);
     });
@@ -52,6 +57,9 @@ class Game {
         this.newWave();
         this.waveCount++;
         wave.nextWaveTrigger = true;
+        if (this.waveCount % 5 === 0) {
+          this.player.lives++;
+        }
       }
     });
     this.drawGameOverText(context);
@@ -83,6 +91,7 @@ class Game {
   drawStatusText(context) {
     context.fillText("Score: " + this.score, 30, 45);
     context.fillText("Wave: " + this.waveCount, 30, 90);
+    /////// FEATURE NEEDED: coffee cup svg for lives instead of numbers
     if (this.player.lives > -1) {
       context.fillText("Lives: " + this.player.lives, 30, 135);
     } else {
@@ -98,7 +107,13 @@ class Game {
     if (this.gameOver) {
       context.textAlign = "center";
       context.font = "500 100px DotGothic16";
-      context.fillText("GAME OVER!", this.width * 0.5, this.height * 0.35);
+      context.fillText("GAME OVER!", this.width * 0.5, this.height * 0.4);
+      context.font = "500 30px DotGothic16";
+      context.fillText(
+        `Press "R" to try again`,
+        this.width * 0.5,
+        this.height * 0.47
+      );
     }
     context.restore();
   }
@@ -112,6 +127,16 @@ class Game {
       this.rows++;
     }
     this.waves.push(new Wave(this));
+  }
+  restart() {
+    this.player.restart();
+    this.columns = 2;
+    this.rows = 2;
+    this.waves = [];
+    this.waves.push(new Wave(this));
+    this.waveCount = 1;
+    this.score = 0;
+    this.gameOver = false;
   }
 }
 

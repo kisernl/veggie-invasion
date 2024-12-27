@@ -12,3 +12,8 @@ body {
   translate: -50% -50%;
   background-image: url("veggie-invasion-background.png");
 }
+
+#food_sheet,
+#explosion {
+  display: none;
+}
