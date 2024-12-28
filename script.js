@@ -41,6 +41,21 @@ window.addEventListener("load", function () {
     ctx.restore();
   }
 
+  // FontFace API to check if the font is loaded
+  const font = new FontFace("DotGothic16", "url(path/to/DotGothic16.woff2)");
+  font
+    .load()
+    .then(() => {
+      document.fonts.add(font);
+      // Once the font is loaded, start the game by showing the welcome message
+      drawWelcomeMessage();
+    })
+    .catch((error) => {
+      console.error("Font loading failed: ", error);
+      // If font fails to load, proceed anyway
+      drawWelcomeMessage();
+    });
+
   // Animation loop
   function animate(timeStamp) {
     if (gameStarted) {

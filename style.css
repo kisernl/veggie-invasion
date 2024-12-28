@@ -4,6 +4,11 @@ body {
   font-family: "DotGothic16", serif;
 }
 
+.game-container {
+  max-height: 100%;
+  padding: 50px;
+}
+
 #canvas1 {
   border: 10px solid #c7f1c7;
   position: absolute;
