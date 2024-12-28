@@ -32,6 +32,7 @@ class Game {
 
     this.score = 0;
     this.gameOver = false;
+    this.coffeeCup = document.getElementById("coffee_cup");
 
     // event listener
     window.addEventListener("keydown", (e) => {
@@ -106,14 +107,18 @@ class Game {
   }
   drawStatusText(context) {
     context.fillText("Score: " + this.score, 30, 45);
-    context.fillText("Wave: " + this.waveCount, 30, 90);
+    //context.fillText("Wave: " + this.waveCount, 30, 90);
     /////// FEATURE NEEDED: coffee cup svg for lives instead of numbers
-    if (this.player.lives > -1) {
-      context.fillText("Lives: " + this.player.lives, 30, 135);
-    } else {
-      context.fillText("Lives: 0", 30, 135);
+    // if (this.player.lives > -1) {
+    //   context.fillText("Lives: " + this.player.lives, 30, 135);
+    // } else {
+    //   context.fillText("Lives: 0", 30, 135);
+    // }
+    for (let i = 0; i < this.player.lives; i++) {
+      const cupX = 30 + i * 40; // Offset each coffee cup horizontally
+      const cupY = 60; // Fixed vertical position
+      context.drawImage(this.coffeeCup, cupX, cupY, 30, 30); // 30x30 size
     }
-    for (let i = 0; i < this.player.lives; i++) {}
   }
   drawGameOverText(context) {
     context.save();
