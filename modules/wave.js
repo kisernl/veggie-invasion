@@ -9,15 +9,21 @@ class Wave {
     // if the wave starts at 0, it gets stuck on left corner, must start within boundaries set in render method
     this.x = this.game.width * 0.5 - this.width * 0.5;
     this.y = -this.height;
-    this.speedX = Math.random() < 0.5 ? -3 : 3;
+
+    if (this.game.waveCount % 5 === 0) {
+      this.game.waveSpeed++;
+    }
+    this.speedX =
+      Math.random() < 0.5 ? -this.game.waveSpeed : this.game.waveSpeed;
     this.speedY = 0;
     this.enemies = [];
     this.nextWaveTrigger = false;
     this.create();
   }
   render(context) {
-    if (this.y < 0) this.y += 5;
+    if (this.y < 48) this.y += 5;
     this.speedY = 0;
+
     //////// this code caused a glitch when waves dropped in
     // if (
     //   // code below causes wave to bounce 1/2 the enemy width short of right and left game edge

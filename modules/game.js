@@ -17,13 +17,14 @@ class Game {
     this.fired = false;
 
     //wave grid for enemies
-    this.columns = 6;
-    this.rows = 12;
+    this.columns = 2;
+    this.rows = 2;
     this.enemySize = 48;
 
+    this.waveCount = 1;
+    this.waveSpeed = 2;
     this.waves = [];
     this.waves.push(new Wave(this));
-    this.waveCount = 1;
 
     this.spriteUpdate = false;
     this.spriteTimer = 0;
