@@ -4,9 +4,9 @@ body {
   font-family: "DotGothic16", serif;
 }
 
-.game-container {
-  max-height: 100%;
-  padding: 50px;
+canvas {
+  height: 800px;
+  width: 600px;
 }
 
 #canvas1 {
