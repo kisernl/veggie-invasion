@@ -17,13 +17,17 @@ class Game {
     this.fired = false;
 
     //wave grid for enemies
-    this.columns = 2;
-    this.rows = 2;
+    this.columns = 6;
+    this.rows = 6;
     this.enemySize = 48;
 
     this.waves = [];
     this.waves.push(new Wave(this));
     this.waveCount = 1;
+
+    this.spriteUpdate = false;
+    this.spriteTimer = 0;
+    this.spriteInterval = 85;
 
     this.score = 0;
     this.gameOver = false;
@@ -43,7 +47,16 @@ class Game {
     });
   }
 
-  render(context) {
+  render(context, deltaTime) {
+    // sprite timing
+    if (this.spriteTimer > this.spriteInterval) {
+      this.spriteUpdate = true;
+      this.spriteTimer = 0;
+    } else {
+      this.spriteUpdate = false;
+      this.spriteTimer += deltaTime;
+    }
+
     this.drawStatusText(context);
     this.player.draw(context);
     this.player.update();

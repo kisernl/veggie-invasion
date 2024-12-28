@@ -13,7 +13,6 @@ body {
   background-image: url("veggie-invasion-background.png");
 }
 
-#food_sheet,
-#explosion {
+#veggie_sprite_sheet {
   display: none;
 }

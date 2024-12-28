@@ -1,17 +1,15 @@
 import Enemy from "./enemy.js";
+import Veggies from "./veggies.js";
 
 class Wave {
   constructor(game) {
     this.game = game;
-    // this.enemySize = this.game.enemySize;
     this.width = this.game.columns * this.game.enemySize;
     this.height = this.game.rows * this.game.enemySize;
     // if the wave starts at 0, it gets stuck on left corner, must start within boundaries set in render method
-    this.x = 0 + this.game.width * 0.25;
-    this.y = 0 - this.height;
-    // this.x = 0 + this.width;
-    // this.y = 0 - this.height;
-    this.speedX = 3;
+    this.x = this.game.width * 0.5 - this.width * 0.5;
+    this.y = -this.height;
+    this.speedX = Math.random() < 0.5 ? -3 : 3;
     this.speedY = 0;
     this.enemies = [];
     this.nextWaveTrigger = false;
@@ -20,11 +18,16 @@ class Wave {
   render(context) {
     if (this.y < 0) this.y += 5;
     this.speedY = 0;
-    if (
-      // code below causes wave to bounce 1/2 the enemy width short of right and left game edge
-      this.x - this.game.enemySize * 0.5 < 0 ||
-      this.x + this.width > this.game.width - this.game.enemySize * 0.5
-    ) {
+    //////// this code caused a glitch when waves dropped in
+    // if (
+    //   // code below causes wave to bounce 1/2 the enemy width short of right and left game edge
+    //   this.x - this.game.enemySize * 0.5 < 0 ||
+    //   this.x + this.width > this.game.width - this.game.enemySize * 0.5
+    // ) {
+    //   this.speedX *= -1;
+    //   this.speedY = this.game.enemySize;
+    // }
+    if (this.x < 0 || this.x > this.game.width - this.width) {
       this.speedX *= -1;
       this.speedY = this.game.enemySize;
     }
@@ -41,7 +44,7 @@ class Wave {
       for (let x = 0; x < this.game.columns; x++) {
         let enemyX = x * this.game.enemySize;
         let enemyY = y * this.game.enemySize;
-        this.enemies.push(new Enemy(this.game, enemyX, enemyY));
+        this.enemies.push(new Veggies(this.game, enemyX, enemyY));
       }
     }
   }
@@ -50,4 +53,4 @@ class Wave {
 export default Wave;
 
 ////////////////////
-// timestamp: 37:57 https://www.youtube.com/watch?v=cuudnyDyWGE&t=5839s
+// timestamp: 1:16:32 https://www.youtube.com/watch?v=cuudnyDyWGE&t=5839s
