@@ -3,7 +3,7 @@ body {
   font-family: "DotGothic16", serif;
 }
 main {
-  background-image: url("donut_shop_15.png");
+  background-image: url("img/donut_shop_15.png");
   background-size: cover;
   background-repeat: no-repeat;
   height: 100vh;
@@ -18,7 +18,9 @@ main {
   top: 50%;
   left: 50%;
   translate: -50% -50%;
-  background-image: url("veggie-invasion-background.png");
+  background-image: url("img/veggie-invasion-background.png");
+  background-size: cover;
+  background-repeat: no-repeat;
 }
 
 #veggie_sprite_sheet,
