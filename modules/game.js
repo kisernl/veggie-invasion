@@ -12,13 +12,13 @@ class Game {
     this.player = new Player(this);
 
     this.projectilesPool = [];
-    this.numberOfProjectiles = 10;
+    this.numberOfProjectiles = 15;
     this.createProjectiles();
     this.fired = false;
 
     //wave grid for enemies
     this.columns = 6;
-    this.rows = 6;
+    this.rows = 12;
     this.enemySize = 48;
 
     this.waves = [];
@@ -27,7 +27,7 @@ class Game {
 
     this.spriteUpdate = false;
     this.spriteTimer = 0;
-    this.spriteInterval = 85;
+    this.spriteInterval = 75;
 
     this.score = 0;
     this.gameOver = false;
@@ -58,8 +58,8 @@ class Game {
     }
 
     this.drawStatusText(context);
-    this.player.draw(context);
-    this.player.update();
+    // this.player.draw(context);
+    // this.player.update();
     this.projectilesPool.forEach((projectile) => {
       projectile.update();
       projectile.draw(context);
@@ -75,6 +75,8 @@ class Game {
         }
       }
     });
+    this.player.draw(context);
+    this.player.update();
     this.drawGameOverText(context);
   }
   // create projectiles object pool

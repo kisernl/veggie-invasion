@@ -32,7 +32,7 @@ class Wave {
       this.speedY = this.game.enemySize;
     }
     this.x += this.speedX;
-    this.y += this.speedY;
+    if (!this.game.gameOver) this.y += this.speedY;
     this.enemies.forEach((enemy) => {
       enemy.update(this.x, this.y);
       enemy.draw(context);

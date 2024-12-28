@@ -1,6 +1,6 @@
 class Projectile {
   constructor() {
-    this.width = 4;
+    this.width = 6;
     this.height = 20;
     this.x = 0;
     this.y = 0;
@@ -9,7 +9,10 @@ class Projectile {
   }
   draw(context) {
     if (!this.free) {
+      context.save();
+      context.fillStyle = "white";
       context.fillRect(this.x, this.y, this.width, this.height);
+      context.restore();
     }
   }
   update() {

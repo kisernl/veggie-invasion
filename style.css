@@ -5,7 +5,7 @@ body {
 }
 
 #canvas1 {
-  border: 10px solid #ff90c7;
+  border: 10px solid #c7f1c7;
   position: absolute;
   top: 50%;
   left: 50%;
@@ -13,6 +13,7 @@ body {
   background-image: url("veggie-invasion-background.png");
 }
 
-#veggie_sprite_sheet {
+#veggie_sprite_sheet,
+#pink_donut {
   display: none;
 }

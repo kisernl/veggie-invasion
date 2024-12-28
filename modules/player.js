@@ -1,17 +1,17 @@
 class Player {
   constructor(game) {
     this.game = game;
-    this.width = 100;
-    this.height = 100;
+    this.width = 64;
+    this.height = 64;
     this.x = this.game.width * 0.5 - this.width * 0.5;
-    this.y = this.game.height - this.height;
-
-    //player speed
+    this.y = this.game.height - this.height * 1.5;
     this.speed = 5;
     this.lives = 3;
+    this.image = document.getElementById("pink_donut");
   }
   draw(context) {
-    context.fillRect(this.x, this.y, this.width, this.height);
+    // context.fillRect(this.x, this.y, this.width, this.height);
+    context.drawImage(this.image, this.x, this.y);
   }
   update() {
     // player movement
@@ -25,11 +25,12 @@ class Player {
   }
   shoot() {
     const projectile = this.game.getProjectile();
-    if (projectile) projectile.start(this.x + this.width * 0.5, this.y);
+    if (projectile && !this.game.gameOver)
+      projectile.start(this.x + this.width * 0.5, this.y);
   }
   restart() {
     this.x = this.game.width * 0.5 - this.width * 0.5;
-    this.y = this.game.height - this.height;
+    this.y = this.game.height - this.height * 1.5;
     this.lives = 3;
   }
 }
