@@ -25,14 +25,14 @@ window.addEventListener("load", function () {
     ctx.fillStyle = "#c7f1c7";
     ctx.font = "500 75px DotGothic16";
     ctx.fillText("Veggie Invasion", canvas.width * 0.5, canvas.height * 0.25);
-    ctx.font = "500 25px DotGothic16";
+    ctx.font = "500 30px DotGothic16";
     ctx.fillText(
       "Arrow Left / Arrow Right to Move",
       canvas.width * 0.5,
       canvas.height * 0.35
     );
     ctx.fillText(`& "S" to shoot!`, canvas.width * 0.5, canvas.height * 0.4);
-    ctx.font = "500 40px DotGothic16";
+    ctx.font = "500 45px DotGothic16";
     ctx.fillText(
       "Press Enter to Start",
       canvas.width * 0.5,

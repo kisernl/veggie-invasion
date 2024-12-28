@@ -140,7 +140,7 @@ class Game {
   }
   newWave() {
     if (
-      Math.random() < 0.5 &&
+      Math.random() < 0.65 &&
       this.columns * this.enemySize < this.width * 0.8
     ) {
       this.columns++;

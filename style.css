@@ -1,12 +1,18 @@
 body {
   margin: 0;
-  background-image: url("donut_shop_15.png");
   font-family: "DotGothic16", serif;
+}
+main {
+  background-image: url("donut_shop_15.png");
+  background-size: cover;
+  background-repeat: no-repeat;
+  height: 100vh;
+  width: 100vw;
 }
 
 #canvas1 {
-  max-height: 95vh;
-  width: auto;
+  height: 90vh;
+  max-height: 800px;
   border: 10px solid #c7f1c7;
   position: absolute;
   top: 50%;
